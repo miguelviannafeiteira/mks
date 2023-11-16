@@ -3,7 +3,7 @@ import { ProductsOutput } from "../types/productsModel";
 export const PRODUCTS_RESPONSE: ProductsOutput = {
     "products": [
         {
-            "id": 8,
+            "id": "8",
             "name": "Headset Cloud Stinger",
             "brand": "HyperX",
             "description": "O HyperX Cloud Stinger™ é o headset ideal para jogadores que procuram leveza e conforto, qualidade de som superior e maior praticidade.",
@@ -11,7 +11,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "600.00",
         },
         {
-            "id": 7,
+            "id": "7",
             "name": "Headset Cloud Revolver",
             "brand": "HyperX",
             "description": "A linha HyperX Cloud Revolver foi projetada para atender as exigências dos gamers de PC ou de console.",
@@ -19,7 +19,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "1000.00",
         },
         {
-            "id": 6,
+            "id": "6",
             "name": "iPad",
             "brand": "Apple",
             "description": "iPad é uma linha de tablets projetada, desenvolvida e comercializada pela Apple, que funciona com o sistema operacional móvel iOS e iPadOS.",
@@ -27,7 +27,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "4200.00",
         },
         {
-            "id": 5,
+            "id": "5",
             "name": "Apple Watch Series 7",
             "brand": "Apple",
             "description": "O Apple Watch faz coisas que outros aparelhos não conseguem porque ele fica no seu pulso.",
@@ -35,7 +35,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "3200.00",
         },
         {
-            "id": 4,
+            "id": "4",
             "name": "iPhone 12 64 GB",
             "brand": "Apple",
             "description": "Grave vídeos 4K, faça belos retratos e capture paisagens inteiras com o novo sistema de câmera dupla.",
@@ -43,7 +43,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "6500.00",
         },
         {
-            "id": 3,
+            "id": "3",
             "name": "Macbook Air",
             "brand": "Apple",
             "description": "Processador intel Core i5 de dois núcleos e 1,8 GHz (Turbo Boost de até 2,9 GHz) com cache L3 compartilhado de 3 MB.",
@@ -51,7 +51,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "8200.00",
         },
         {
-            "id": 2,
+            "id": "2",
             "name": "AirPods",
             "brand": "Apple",
             "description": "Criados pela Apple Ligam e se conectam automaticamente Configuração com apenas um toque para todos seus aparelhos Apple.",
@@ -59,7 +59,7 @@ export const PRODUCTS_RESPONSE: ProductsOutput = {
             "price": "1200.00",
         },
         {
-            "id": 1,
+            "id": "1",
             "name": "Iphone 11 128 GB",
             "brand": "Apple",
             "description": "Grave vídeos 4K, faça belos retratos e capture paisagens inteiras com o novo sistema de câmera dupla.",
