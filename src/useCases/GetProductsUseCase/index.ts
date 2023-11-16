@@ -13,10 +13,9 @@ export class GetProductsUseCase {
 
     async execute() {
         this.useProducts.startLoading()
-        this.useProducts.mountProductsList(PRODUCTS_RESPONSE)
+        this.useProducts.mountProductsList(PRODUCTS_RESPONSE.products)
 
         try {
-
             const data = await this.api()
             this.useProducts.mountProductsList(data.products)
         } catch (e) {
