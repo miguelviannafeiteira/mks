@@ -1,5 +1,5 @@
 import { RefObject, useState } from "react"
-import { Product, ProductInCart } from "../../types/productsModel"
+import { Product } from "../../types/productsModel"
 
 export interface useProductsInterface {
     isLoading: boolean
@@ -40,8 +40,8 @@ export function useProducts(): useProductsInterface {
     }
 
     function outSideClick(modalRef: RefObject<HTMLDivElement>) {
-        const outSideClickOnModal = (e: any) => {
-            if (!modalRef?.current?.contains(e.target)) {
+        const outSideClickOnModal = (e: Event) => {
+            if (!modalRef?.current?.contains(e.target as Node)) {
                 hideModal()
             }
         }
@@ -57,6 +57,7 @@ export function useProducts(): useProductsInterface {
         hideModal,
         isModalVisible,
         showModal,
-        outSideClick
+        outSideClick,
+
     }
 }
