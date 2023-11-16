@@ -28,12 +28,12 @@ export function Modal({ isVisible, onClose, cartList, removeFromCart, modalRef }
     }, [cartUseCase])
 
     return isVisible ? (
-        <div ref={modalRef} className="z-50 h-full sm:w-[500px] w-[350px] bg-[#0F52BA] top-0 right-0 fixed shadow-lg flex flex-col justify-between overflow-y-auto">
+        <div ref={modalRef} data-testid="modal" className="z-50 h-full sm:w-[500px] w-[350px] bg-[#0F52BA] top-0 right-0 fixed shadow-lg flex flex-col justify-between overflow-y-auto">
             <div>
                 <header className="flex justify-between items-center pt-9 sm:pl-14 sm:pr-5 pl-11 pr-5">
                     <h2 className="font-bold text-white text-[27px] w-[180px] leading-8">Carrinho <br /> de compras</h2>
 
-                    <button onClick={onClose} className="bg-black rounded-full p-1 cursor-pointer">
+                    <button onClick={onClose} data-testid='closeButton' className="bg-black rounded-full p-1 cursor-pointer">
                         <IoCloseOutline size={32} color="#fff" />
                     </button>
                 </header>

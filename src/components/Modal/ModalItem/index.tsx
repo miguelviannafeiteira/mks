@@ -34,7 +34,7 @@ export function ModalItem({ name, price, url, description, quantity, removeItem,
     }
 
     return (
-        <div className="mt-16 relative bg-white sm:h-[100px] sm:w-[379px] flex sm:flex-row flex-col justify-around items-center gap-4 mx-auto px-4 w-[250px] h-[220px] rounded-md shadow-md">
+        <div data-testid="modal-item" className="mt-16 relative bg-white sm:h-[100px] sm:w-[379px] flex sm:flex-row flex-col justify-around items-center gap-4 mx-auto px-4 w-[250px] h-[220px] rounded-md shadow-md">
             <Image src={url} alt={description} width={90} height={57} className="overflow-hidden" />
 
             <p className="sm:text-base text-center text-lg font-normal sm:w-[113px] w-full text-[#2C2C2C]">
@@ -47,13 +47,13 @@ export function ModalItem({ name, price, url, description, quantity, removeItem,
                         Qtd:
                     </span>
 
-                    <button onClick={decreaseQuantity} className="cursor-pointer sm:pl-2 sm:pr-[4px] pl-[10px] pr-[10px] py-2">
+                    <button data-testid="decrease-btn" onClick={decreaseQuantity} className="cursor-pointer sm:pl-2 sm:pr-[4px] pl-[10px] pr-[10px] py-2">
                         <GrFormSubtract size={12} />
                     </button>
 
                     <span className={`${beforeAfterClass}`}>{productQuantity}</span>
 
-                    <button onClick={increaseQuantity} className="cursor-pointer sm:pl-[4px] sm:pr-2  pl-[10px] pr-[10px] py-2">
+                    <button data-testid="increase-btn" onClick={increaseQuantity} className="cursor-pointer sm:pl-[4px] sm:pr-2  pl-[10px] pr-[10px] py-2">
                         <GoPlus size={12} />
                     </button>
                 </div>
@@ -63,7 +63,7 @@ export function ModalItem({ name, price, url, description, quantity, removeItem,
                 </span>
             </div>
 
-            <button onClick={removeItem} className="bg-black rounded-full p-1 cursor-pointer absolute top-[-5px] right-[-6px]">
+            <button data-testid="remove-item" onClick={removeItem} className="bg-black rounded-full p-1 cursor-pointer absolute top-[-5px] right-[-6px]">
                 <IoCloseOutline size={18} color="#fff" />
             </button>
         </div>
