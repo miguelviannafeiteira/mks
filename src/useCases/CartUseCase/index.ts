@@ -19,6 +19,8 @@ export class CartUseCase {
     addToCart(product: Product) {
         const itemInCart = this.cartList.find((cartItem) => cartItem.id === product.id)
 
+        this.useCart.showTag()
+
         if (itemInCart) {
             this.increaseQuantity(itemInCart)
             return

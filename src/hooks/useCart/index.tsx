@@ -7,12 +7,14 @@ export interface useCartInterface {
     removeFromCartList(id: string): void
     totalPrice: number
     defineTotalPrice: Dispatch<SetStateAction<number>>
+    isTagVisible: boolean
+    showTag(): void
 }
 
 export function useCart(): useCartInterface {
     const [totalPrice, defineTotalPrice] = useState(0)
+    const [isTagVisible, shouldDisplayTag] = useState(false)
     const [cartList, addProductsToCart] = useState<ProductInCart[]>([])
-
 
     function addToCartList(product: Product) {
         addProductsToCart((prev) => ([...prev, { ...product, quantity: 1 }]))
@@ -22,11 +24,21 @@ export function useCart(): useCartInterface {
         addProductsToCart(cartList.filter((item) => item.id !== id))
     }
 
+    function showTag() {
+        shouldDisplayTag(true)
+
+        setTimeout(() => {
+            shouldDisplayTag(false)
+        }, 2000);
+    }
+
     return {
         cartList,
         addToCartList,
         removeFromCartList,
         defineTotalPrice,
-        totalPrice
+        totalPrice,
+        isTagVisible,
+        showTag
     }
 }

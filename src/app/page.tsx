@@ -3,15 +3,14 @@
 import { TiShoppingCart } from "react-icons/ti";
 import { FormEvent, Fragment, useEffect, useRef, useState } from 'react'
 
-import { getProduts } from '../services/products'
-import { useProducts } from '../hooks/useProducts'
-import { ProductItem } from '../components/ProductItem'
-import { GetProductsUseCase } from '../useCases/GetProductsUseCase'
-import { Modal } from "../components/Modal";
-import { CartUseCase } from "../useCases/CartUseCase";
-import { useCart } from "../hooks/useCart";
-import { useGobalContext } from "../context";
-import { ShimmerEffect } from "../components/ShimmerEffect";
+import { Tag } from "@/components/Tag";
+import { Modal } from "@/components/Modal";
+import { useGobalContext } from "@/context";
+import { getProducts } from '@/services/products'
+import { CartUseCase } from "@/useCases/CartUseCase";
+import { ProductItem } from '@/components/ProductItem'
+import { ShimmerEffect } from "@/components/ShimmerEffect";
+import { GetProductsUseCase } from '@/useCases/GetProductsUseCase'
 
 export default function Home() {
   const modalRef = useRef<HTMLDivElement>(null)
@@ -19,7 +18,7 @@ export default function Home() {
   const { useCartHook, useProductsHook } = useGobalContext()
 
   const cartUseCase = new CartUseCase(useCartHook)
-  const getProductsUseCase = new GetProductsUseCase(getProduts, useProductsHook)
+  const getProductsUseCase = new GetProductsUseCase(getProducts, useProductsHook)
 
   useEffect(() => {
     useProductsHook.outSideClick(modalRef)
@@ -39,7 +38,7 @@ export default function Home() {
         </div>
 
         <button onClick={useProductsHook.showModal} className="flex gap-4 items-center bg-white rounded-lg py-3 pl-4 pr-7">
-          <TiShoppingCart size={26} color="#000" />
+          <TiShoppingCart data-testid="cart-icon" size={26} color="#000" />
 
           <span className="text-black font-bold text-lg">
             {cartUseCase.cartList.length}
@@ -48,20 +47,24 @@ export default function Home() {
       </header>
 
 
-      <div className="max-w-[940px] grid gap-12 md:grid-cols-4 md:place-items-end grid-cols-1 mt-[90px] mx-auto place-items-center">
+      <div className="max-w-[940px] grid gap-12 md:grid-cols-4 md:place-items-end grid-cols-1 mt-[90px] mx-auto place-items-center relative">
         {getProductsUseCase.products.map((product) => (
           <ShimmerEffect key={product.id} isLoading={useProductsHook.isLoading}>
             <ProductItem
               key={product.id}
               url={product.photo}
               name={product.name}
+              data-testid="product"
               price={product.price}
               description={product.description}
               addToCart={() => cartUseCase.addToCart(product)}
             />
+
           </ShimmerEffect>
         ))}
       </div>
+
+      <Tag isVisible={useCartHook.isTagVisible} />
 
       <Modal
         modalRef={modalRef}
