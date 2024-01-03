@@ -15,4 +15,3 @@ Para a sua criação foi utilizado o framework Next.js junto com Typescript e pa
   <li>Axios</li>
   <li>React-testing-library</li>
 </ul>
-

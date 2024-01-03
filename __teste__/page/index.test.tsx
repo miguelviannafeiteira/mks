@@ -2,10 +2,22 @@ import React from "react";
 import "@testing-library/jest-dom"
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react"
 
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
 import Home from "@/app/page";
 import { GlobalContextProvider } from "@/context";
+import { PRODUCTS_RESPONSE } from "../../src/mocks";
+
+function mockHttpReq() {
+    const mock = new MockAdapter(axios)
+    const data = { response: PRODUCTS_RESPONSE }
+    mock.onGet('https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC').reply(200, data)
+
+}
 
 describe("<Home />", () => {
+    mockHttpReq()
     describe("A tela inicial deve conter", () => {
         beforeEach(() => {
             render(
@@ -14,6 +26,7 @@ describe("<Home />", () => {
                 </GlobalContextProvider>
             )
         })
+
 
         it("um cabeçalho com os textos MKS Sistemas e 0 itens no carrinho", () => {
             const cartIcon = screen.getByTestId('cart-icon')
@@ -84,6 +97,7 @@ describe("<Home />", () => {
 })
 
 describe("Modal", () => {
+    mockHttpReq()
     beforeEach(() => {
         render(
             <GlobalContextProvider>
