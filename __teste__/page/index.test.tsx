@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom"
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react"
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react"
 
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -8,12 +8,17 @@ import MockAdapter from 'axios-mock-adapter';
 import Home from "@/app/page";
 import { GlobalContextProvider } from "@/context";
 import { PRODUCTS_RESPONSE } from "../../src/mocks";
+import { getProducts } from "../../src/services/products";
+import { api } from "../../src/services/api";
 
 function mockHttpReq() {
     const mock = new MockAdapter(axios)
     const data = { response: PRODUCTS_RESPONSE }
     mock.onGet('https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=DESC').reply(200, data)
+}
 
+function mockHttpReq2() {
+    jest.spyOn(api, 'get').mockResolvedValueOnce({ data: PRODUCTS_RESPONSE })
 }
 
 describe("<Home />", () => {
